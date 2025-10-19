@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
+import { toast } from 'react-toastify'
 
 const Navbar = ({setShowLogin}) => {
     const [menu, setMenu] = useState("home");
@@ -11,6 +12,7 @@ const Navbar = ({setShowLogin}) => {
 
     const logout = () =>{
         localStorage.removeItem("token");
+        toast.success("Logged Out!!")
         setToken("");
         navigate("/");
     }

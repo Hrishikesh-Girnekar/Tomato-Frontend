@@ -54,21 +54,38 @@ const PlaceOrder = () => {
     let response = await axios.post(url+"/api/order/place", orderData, {headers:{token}});
 
     if(response.data.success){
+      toast.success(response.data.message);
       const {session_url} = response.data;
       window.location.replace(session_url);
-      toast.success(response.data.message)
+      
     }else{
-      toast.error(response.data.message)
+      toast.error(response.data.message);
     }
   }
 
   useEffect(() => {
     if(!token){
+      toast.error("You are not Logged in !")
       navigate('/cart')
     }else if(getTotalCartAmount() == 0){
+      toast.error("Please add some food to cart first !")
       navigate('/cart')
     }
   },[token])
+
+  // Instead of above, you can do it in cart page itself with below code by changing onClick event
+  
+  // const handleCheckout = () => {
+  //   if (!token) {
+  //     toast.error("You are not logged in!");
+  //     navigate('/cart');
+  //   } else if (getTotalCartAmount() === 0) {
+  //     toast.error("Please add some food to cart first!");
+  //     navigate('/cart');
+  //   } else {
+  //     navigate("/order");
+  //   }
+  // };
 
 
   return (
