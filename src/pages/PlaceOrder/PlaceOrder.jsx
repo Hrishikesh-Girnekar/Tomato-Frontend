@@ -53,27 +53,16 @@ const PlaceOrder = () => {
 
     let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
 
-    // if(response.data.success){
-    //   toast.success(response.data.message);
-    //   const {session_url} = response.data;
-    //   window.location.replace(session_url);
+    if(response.data.success){
+      
+      const {session_url} = response.data;
+      window.location.replace(session_url);
 
-    // }else{
-    //   toast.error(response.data.message);
-    // }
-
-    if (response.data.success) {
-      toast.success(response.data.message);
-
-      const { session_url } = response.data;
-
-      // Wait 1 second to show toast before redirect
-      setTimeout(() => {
-        window.location.replace(session_url);
-      }, 2000);
-    } else {
-      toast.error(response.data.message);
+    }else{
+      toast.error("Something went wrong !");
     }
+
+    
 
   }
 

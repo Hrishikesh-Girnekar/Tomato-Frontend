@@ -14,6 +14,7 @@ const StoreContextProvider = (props) => {
 
     const url = "https://tomato-backend-i8yh.onrender.com";
 
+
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
             setCartItems((prev) => ({ ...prev, [itemId]: 1 }))
