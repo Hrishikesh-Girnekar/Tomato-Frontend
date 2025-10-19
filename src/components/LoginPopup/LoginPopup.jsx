@@ -3,6 +3,7 @@ import './LoginPopup.css'
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 const LoginPopup = ({ setShowLogin }) => {
 
@@ -39,9 +40,10 @@ const LoginPopup = ({ setShowLogin }) => {
         if(response.data.success){
             setToken(response.data.token);
             localStorage.setItem("token", response.data.token);
+            toast.success(response.data.message)
             setShowLogin(false); // after login, login page will be hidden
         }else{
-            alert(response.data.message);
+            toast.error(response.data.message)
         }
 
 

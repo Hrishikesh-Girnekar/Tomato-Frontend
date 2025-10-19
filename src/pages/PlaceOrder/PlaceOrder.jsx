@@ -4,6 +4,7 @@ import { StoreContext } from '../../context/StoreContext'
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const PlaceOrder = () => {
@@ -55,8 +56,9 @@ const PlaceOrder = () => {
     if(response.data.success){
       const {session_url} = response.data;
       window.location.replace(session_url);
+      toast.success(response.data.message)
     }else{
-      alert("Error");
+      toast.error(response.data.message)
     }
   }
 
