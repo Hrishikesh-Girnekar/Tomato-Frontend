@@ -4,14 +4,16 @@ import Header from '../../components/Header/Header'
 import ExploreMenu from '../../components/ExploreMenu/ExploreMenu'
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay'
 import AppDownload from '../../components/AppDownload/AppDownload'
+import SkeletonProductRow from '../../components/Loader/SkeletonProductRow'
 
-const Home = () => {
+const Home = ({loading}) => {
   const [category, setCategory] = useState("All")
   return (
     <div>
         <Header/>
         <ExploreMenu category={category} setCategory={setCategory} />
-        <FoodDisplay category={category} />
+        {loading ? <SkeletonProductRow/> : <FoodDisplay category={category} /> }
+        
         <AppDownload/>
       
     </div>
