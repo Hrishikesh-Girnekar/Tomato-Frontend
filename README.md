@@ -60,7 +60,7 @@ The frontend communicates with backend APIs for:
 ## 🧪 How to Run Locally
 
 ```bash
-git clone <your-frontend-repo>
+git clone https://github.com/Hrishikesh-Girnekar/Tomato-Frontend.git
 cd tomato-frontend
 
 npm install
